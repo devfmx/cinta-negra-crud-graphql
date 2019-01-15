@@ -7,7 +7,7 @@ const createPost = (data) => {
 
 
 const getAllPost = () => {
-	return Post.find({});
+	return Post.find({is_active:true});
 };
 
 const getPostById = (id) => {

@@ -12,7 +12,7 @@ const getUserByEmail = (email) => {
 };
 
 const getUserById = (id) => {
-	return User.findOne({_id:id,is_active:true}).select("-password");
+	return User.findOne({_id:id,is_active:true}).select("-password").populate("posts");
 };
 
 const getAllUsers = () => {
@@ -24,7 +24,8 @@ const updateUserById = (id,data) =>{
 };
 
 const addPostToUser = (id,post) => {
-	return User.findByIdAndUpdate(id,{$push:{posts:post}});
+	
+	return User.findByIdAndUpdate(id,{$push:{posts:post}},{new:true});
 };
 const deleteUserById =  (id)  => {
 	return User.findByIdAndUpdate({_id:id,is_active:true},{$set:{is_active:false}},{new:true});

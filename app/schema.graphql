@@ -4,6 +4,8 @@ type  Query {
 	prueba:String
 	Users:[User]
 	User(id:ID!):User
+	Posts:[Post]
+	Post(id:ID!):Post
 }
 
 type Mutation {
@@ -11,6 +13,9 @@ type Mutation {
 	login(email:String!,password:String!):Auth
 	updateUser(id:ID,data:UserUpdateInput!):User
 	deleteUser(id:ID):String
+	createPost(data:PostCreateInput!):Post
+	updatePost(id:ID,data:PostUpdateInput):Post
+	deletePost(id:ID):String
 }
 
 type Auth{
@@ -25,12 +30,13 @@ type User{
 	email:String
 	birth_date:String
 	gender:GENDER
-	posts:POST
-	liked:POST
+	posts:[Post]
+	liked:[Post]
 	is_active:Boolean
 }
 
-type POST{
+type Post{
+	_id:ID
 	title:String
 	content:String
 	category:CATEGORIES
@@ -67,4 +73,21 @@ input UserUpdateInput{
 	gender:GENDER
 	is_active:Boolean
 
+}
+
+
+input PostCreateInput{
+	title:String!
+	content:String!
+	category:CATEGORIES!
+	
+}
+
+input PostUpdateInput{
+	title:String
+	content:String
+	category:CATEGORIES
+	tags:[String]
+	likes:Int
+	is_active:Boolean
 }
