@@ -1,0 +1,9 @@
+const app = require('../app');
+const http = require('http');
+const {port} = require('../config');
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app).listen(port);

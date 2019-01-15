@@ -1,0 +1,70 @@
+
+
+type  Query {
+	prueba:String
+	Users:[User]
+	User(id:ID!):User
+}
+
+type Mutation {
+	signup(data:UserCreateInput!):Auth
+	login(email:String!,password:String!):Auth
+	updateUser(id:ID,data:UserUpdateInput!):User
+	deleteUser(id:ID):String
+}
+
+type Auth{
+	token:String
+	message:String
+}
+
+type User{
+	_id:ID
+	first_name:String
+	last_name:String
+	email:String
+	birth_date:String
+	gender:GENDER
+	posts:POST
+	liked:POST
+	is_active:Boolean
+}
+
+type POST{
+	title:String
+	content:String
+	category:CATEGORIES
+	tags:[String]
+	likes:Int
+	is_active:Boolean
+}
+
+enum GENDER {
+	Male
+	Female
+}
+
+enum  CATEGORIES{
+	TECH
+	DEV
+	GAME
+	HEALTH
+}
+
+input UserCreateInput {
+	first_name:String!
+	last_name:String!
+	email:String!
+	password:String!
+}
+
+input UserUpdateInput{
+	first_name:String
+	last_name:String
+	email:String
+	password:String
+	birth_date:String
+	gender:GENDER
+	is_active:Boolean
+
+}

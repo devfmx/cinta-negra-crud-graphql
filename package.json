@@ -1,0 +1,32 @@
+{
+  "name": "rest-blog",
+  "version": "1.0.0",
+  "description": "Rest API for simple blog app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app/app.js",
+    "watch": "nodemon -e js,graphql --exec 'npm run lint & npm start'",
+    "lint": "eslint app/"
+  },
+  "engines": {
+    "node": ">=8.3.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.3",
+    "graphql-import": "^0.7.1",
+    "graphql-tools": "^4.0.3",
+    "graphql-yoga": "^1.16.7",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.4.2",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.9"
+  },
+  "devDependencies": {
+    "eslint": "^5.11.1",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-security": "^1.4.0"
+  }
+}
