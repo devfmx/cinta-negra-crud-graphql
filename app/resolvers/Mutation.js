@@ -31,6 +31,7 @@ const deleteUser = (_, args, context, info) => {
 
 const createPost = async (_, args, context, info) => {
 	const user = await getUserId(context);
+	args.data.author = user._id;
 	if (!user) throw new Error("User does not exist");
 	return actions.createPost(args.data).then((post) => {
 		return actions.addPostToUser(user._id, post._id).then((user) => {

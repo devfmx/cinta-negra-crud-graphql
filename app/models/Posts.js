@@ -26,7 +26,7 @@ const PostSchema = new Schema({
 		type: Number,
 		default: 0
 	},
-
+	author: { type: mongoose.Schema.Types.ObjectId, ref: "users" },
 	is_active: {
 		type: Boolean,
 		default: true
