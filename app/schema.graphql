@@ -11,11 +11,11 @@ type  Query {
 type Mutation {
 	signup(data:UserCreateInput!):Auth
 	login(email:String!,password:String!):Auth
-	updateUser(id:ID,data:UserUpdateInput!):User
-	deleteUser(id:ID):String
+	updateUser(id:ID!,data:UserUpdateInput!):User
+	deleteUser(id:ID!):String
 	createPost(data:PostCreateInput!):Post
-	updatePost(id:ID,data:PostUpdateInput):Post
-	deletePost(id:ID):String
+	updatePost(id:ID!,data:PostUpdateInput):Post
+	deletePost(id:ID!):String
 }
 
 type Auth{
@@ -37,7 +37,8 @@ type User{
 
 type Post{
 	_id:ID
-	title:String
+	title:String,
+	author:User,
 	content:String
 	category:CATEGORIES
 	tags:[String]

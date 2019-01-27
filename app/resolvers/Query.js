@@ -6,7 +6,7 @@ const prueba = (_, args, context, info) => {
 
 const Users = (_, args, context, info) => {
 
-	return actions.getAllUsers().then(users => users)
+	return actions.getAllUsers().then(users => users)   
 		.catch(e => e);
 
 };

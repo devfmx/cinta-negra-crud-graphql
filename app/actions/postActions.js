@@ -7,7 +7,7 @@ const createPost = (data) => {
 
 
 const getAllPost = () => {
-	return Post.find({is_active:true});
+	return Post.find({is_active:true}).populate("author");
 };
 
 const getPostById = (id) => {

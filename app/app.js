@@ -16,7 +16,6 @@ mongo.on("error", (error) => console.log("Failed to connect to mongo", error))
 
 
 
-
 const schema = makeExecutableSchema({
 	typeDefs,
 	resolvers,
