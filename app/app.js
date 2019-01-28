@@ -5,6 +5,8 @@ const { makeExecutableSchema } = require("graphql-tools");
 const typeDefs = importSchema("./app/schema.graphql");
 const mongoose = require("mongoose");
 
+
+
 const { db } = require("./config");
 
 
@@ -23,7 +25,7 @@ const schema = makeExecutableSchema({
 
 const server = new GraphQLServer({
 	schema,
-	context: req => ({...req})
+	context: req => ({ ...req })
 });
 
 const options = {

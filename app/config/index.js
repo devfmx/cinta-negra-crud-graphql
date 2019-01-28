@@ -7,7 +7,11 @@ const ENVS = {
 		db: {
 			url: "mongodb://127.0.0.1:27017/blog"
 		},
-		port: 3000
+		port: 3000,
+		CLOUDINARY_API_KEY:process.env.CLOUDINARY_API_KEY,
+		CLOUDINARY_SECRET_KEY:process.env.CLOUDINARY_SECRET_KEY,
+		CLOUDINARY_NAME:process.env.CLOUDINARY_NAME
+
 	},
 
 	test: {

@@ -1,5 +1,5 @@
 const actions = require("../actions");
-const { getUserId } = require("../utils");
+const { getUserId, storeUpload } = require("../utils");
 
 const signup = (_, args, context, info) => {
 	return actions.signup(args.data).then(
@@ -31,7 +31,11 @@ const deleteUser = (_, args, context, info) => {
 
 const createPost = async (_, args, context, info) => {
 	const user = await getUserId(context);
+	const { createReadStream, filename } = await args.data.cover;
+	const stream = createReadStream();
+	const { url } = await storeUpload({ stream, filename });
 	args.data.author = user._id;
+	args.data.cover = url;
 	if (!user) throw new Error("User does not exist");
 	return actions.createPost(args.data).then((post) => {
 		return actions.addPostToUser(user._id, post._id).then((user) => {

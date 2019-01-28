@@ -1,3 +1,4 @@
+scalar Upload
 
 
 type  Query {
@@ -37,9 +38,10 @@ type User{
 
 type Post{
 	_id:ID
-	title:String,
-	author:User,
+	title:String
+	author:User
 	content:String
+	cover:String
 	category:CATEGORIES
 	tags:[String]
 	likes:Int
@@ -81,6 +83,7 @@ input PostCreateInput{
 	title:String!
 	content:String!
 	category:CATEGORIES!
+	cover:Upload
 	
 }
 
@@ -88,6 +91,7 @@ input PostUpdateInput{
 	title:String
 	content:String
 	category:CATEGORIES
+	cover:Upload
 	tags:[String]
 	likes:Int
 	is_active:Boolean
