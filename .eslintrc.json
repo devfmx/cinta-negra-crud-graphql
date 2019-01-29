@@ -21,7 +21,16 @@
         "node/prefer-global/process": ["error", "always"],
         "node/prefer-global/url-search-params": ["error", "always"],
         "node/prefer-global/url": ["error", "always"]
-    },
+	},
+	"overrides": [
+		{
+			"files": [ "bin/*.js", "lib/*.js" ],
+			"excludedFiles": "*.test.js",
+			"rules": {
+			  "quotes": [ 2, "single" ]
+			}
+		  }
+	],
     "plugins": [
         "security"
     ]

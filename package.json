@@ -4,7 +4,7 @@
   "description": "Rest API for simple blog app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node app/app.js",
     "watch": "nodemon -e js,graphql --exec 'npm run lint & npm start'",
     "lint": "eslint app/"
@@ -16,9 +16,11 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.3",
+    "graphql": "^14.1.1",
     "graphql-import": "^0.7.1",
     "graphql-tools": "^4.0.3",
     "graphql-yoga": "^1.16.7",
+    "jest": "^24.0.0",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.2",
     "morgan": "^1.9.1",
