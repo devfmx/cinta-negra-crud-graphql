@@ -1,4 +1,4 @@
-
+scalar Upload
 
 type  Query {
 	prueba:String
@@ -32,6 +32,7 @@ type User{
 	gender:GENDER
 	posts:[Post]
 	liked:[Post]
+	profile_image:String
 	is_active:Boolean
 }
 
@@ -63,6 +64,7 @@ input UserCreateInput {
 	last_name:String!
 	email:String!
 	password:String!
+	profile_image:Upload
 }
 
 input UserUpdateInput{

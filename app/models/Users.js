@@ -49,7 +49,9 @@ const UserSchema = new Schema({
 			ref: "posts"
 		}
 	],
-
+	profile_image:{
+		type:String
+	},
 
 	is_active: {
 		type: Boolean,

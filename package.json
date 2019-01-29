@@ -16,6 +16,8 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.3",
+    "cloudinary": "^1.13.2",
+    "dotenv": "^6.2.0",
     "graphql-import": "^0.7.1",
     "graphql-tools": "^4.0.3",
     "graphql-yoga": "^1.16.7",
