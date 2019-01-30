@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app/app.js",
-    "watch": "nodemon -e js,graphql --exec 'npm run lint & npm start'",
+    "watch": "nodemon -e js,graphql --exec npm start",
     "lint": "eslint app/"
   },
   "engines": {

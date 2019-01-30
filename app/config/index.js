@@ -5,7 +5,7 @@ const ENVS = {
 	dev: {
 		SECRET_KEY: "799651B27B2E5D99D17C9CF6754B5",
 		db: {
-			url: "mongodb://127.0.0.1:27017/blog"
+			url: "mongodb+srv://andsor79:Hyomin79@cluster0-8hggo.mongodb.net/test?retryWrites=true"
 		},
 		port: 3000
 	},

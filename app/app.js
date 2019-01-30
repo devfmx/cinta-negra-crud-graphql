@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 
 const { db } = require("./config");
 
-
+console.log('PROCESS--TEST', process.env.NODE_ENV, db)
 mongoose.connect(db.url, { useNewUrlParser: true });
 const mongo = mongoose.connection;
 
