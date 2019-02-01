@@ -15,8 +15,18 @@ type Mutation {
 	deleteUser(id:ID!):String
 	createPost(data:PostCreateInput!):Post
 	updatePost(id:ID!,data:PostUpdateInput):Post
-	deletePost(id:ID!):String
+	deletePost(id:ID!):String,
+	addComment(text:String!):Comment!,
 }
+
+type Subscription {
+	newComment: Comment!,
+}
+
+type Comment {
+	id:Int!
+	text:String!
+  }
 
 type Auth{
 	token:String

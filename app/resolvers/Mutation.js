@@ -1,12 +1,13 @@
 const actions = require("../actions");
 const { getUserId } = require("../utils");
 const { storeUpload } = require("../utils");
+const { GENERAL_CHAT } = require("../utils/channels");
 
 const signup = async (_, args, context, info) => {
-	const { createReadStream } = await args.data.profile_image;
-	const stream = createReadStream();
-	const { url } = await storeUpload(stream);
-	args.data.profile_image = url;
+	// const { createReadStream } = await args.data.profile_image;
+	// const stream = createReadStream();
+	// const { url } = await storeUpload(stream);
+	args.data.profile_image = null;
 	return actions.signup(args.data).then(
 		token => { return { "message": "User created successfully", token: token }; }
 	).catch(e => e);
@@ -61,6 +62,20 @@ const deletePost = async (_, args, context, info) => {
 	}).catch((e) => e);
 };
 
+let nextId = 0;
+let comments = [];
+
+const addComment = async (parent, args, context) => {
+	console.log(context)
+	const user = await getUserId(context);
+	if (!user) throw new Error("you should be authenticated");
+
+	const newComment = { id: nextId++, text: `${user.first_name}: ${args.text}` };
+	comments.push(newComment);
+	context.pubsub.publish(GENERAL_CHAT, { newComment: newComment });
+	return newComment;
+}
+
 module.exports = {
 	signup,
 	login,
@@ -68,5 +83,6 @@ module.exports = {
 	deleteUser,
 	createPost,
 	updatePost,
-	deletePost
+	deletePost,
+	addComment
 };

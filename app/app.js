@@ -1,4 +1,4 @@
-const { GraphQLServer } = require("graphql-yoga");
+const { GraphQLServer, PubSub } = require("graphql-yoga");
 const resolvers = require("./resolvers");
 const { importSchema } = require("graphql-import");
 const { makeExecutableSchema } = require("graphql-tools");
@@ -7,8 +7,9 @@ const mongoose = require("mongoose");
 
 const { db } = require("./config");
 
-console.log('PROCESS--TEST', process.env.NODE_ENV, db)
-mongoose.connect(db.url, { useNewUrlParser: true });
+const pubsub = new PubSub();
+
+mongoose.connect(db.url, { useNewUrlParser: true, useCreateIndex: true });
 const mongo = mongoose.connection;
 
 mongo.on("error", (error) => console.log("Failed to connect to mongo", error))
@@ -23,7 +24,9 @@ const schema = makeExecutableSchema({
 
 const server = new GraphQLServer({
 	schema,
-	context: req => ({...req})
+	context: 
+		req => ({ ...req , pubsub})
+	
 });
 
 const options = {
