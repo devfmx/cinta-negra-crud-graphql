@@ -7,7 +7,11 @@ const dotenv =  require("dotenv");
 
 const result  = dotenv.config();
 
-if(result.error) console.log(result.error);
+try{
+	if(result.error) throw result.error;
+}catch(e){
+	console.log(e);
+}
 
 
 function getUserId(context) {
