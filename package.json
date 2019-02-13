@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app/app.js",
-    "watch": "nodemon -e js,graphql --exec 'npm run lint & npm start'",
+    "watch": "nodemon -e js,graphql --exec npm start",
     "lint": "eslint app/"
   },
   "engines": {
@@ -19,12 +19,13 @@
     "cloudinary": "^1.13.2",
     "dotenv": "^6.2.0",
     "graphql-import": "^0.7.1",
-    "graphql-tools": "^4.0.3",
+    "graphql-tools": "^4.0.4",
     "graphql-yoga": "^1.16.7",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.2",
     "morgan": "^1.9.1",
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.18.9",
+    "subscriptions-transport-ws": "^0.9.15"
   },
   "devDependencies": {
     "eslint": "^5.11.1",

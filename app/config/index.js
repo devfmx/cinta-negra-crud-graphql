@@ -5,7 +5,7 @@ const ENVS = {
 	dev: {
 		SECRET_KEY: "799651B27B2E5D99D17C9CF6754B5",
 		db: {
-			url: "mongodb://127.0.0.1:27017/blog"
+			url: "mongodb://anderson2:user123123@ds127655.mlab.com:27655/test2"
 		}
 	},
 
