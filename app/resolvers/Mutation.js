@@ -1,6 +1,7 @@
 const actions = require("../actions");
 const { getUserId } = require("../utils");
 const { storeUpload } = require("../utils");
+const { NEW_POSTS } = require("../constants/channels");
 
 const signup = async (_, args, context, info) => {
 	const { createReadStream } = await args.data.profile_image;
@@ -39,7 +40,10 @@ const createPost = async (_, args, context, info) => {
 	args.data.author = user._id;
 	if (!user) throw new Error("User does not exist");
 	return actions.createPost(args.data).then((post) => {
-		return actions.addPostToUser(user._id, post._id).then((user) => {
+		return actions.addPostToUser(user._id, post._id).then(async (user) => {
+			const number = { numberNewPosts: await actions.getNewPosts() };
+			console.log('NUMBER-POSTS', number)
+			context.pubsub.publish(NEW_POSTS, { newPosts: number });
 			return post;
 		}).catch(e => e);
 	}).catch(e => e);

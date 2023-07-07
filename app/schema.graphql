@@ -94,3 +94,11 @@ input PostUpdateInput{
 	likes:Int
 	is_active:Boolean
 }
+
+type Subscription {
+	newPosts: typeNewPosts!,
+}
+
+type typeNewPosts {
+	numberNewPosts:Int!
+}

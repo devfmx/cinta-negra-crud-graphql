@@ -7,7 +7,6 @@ const SALT_FACTOR = 10;
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-
 	first_name: {
 		type: String,
 		required: true
@@ -42,7 +41,6 @@ const UserSchema = new Schema({
 			ref: "posts"
 		}
 	],
-
 	Liked: [
 		{
 			type: Schema.Types.ObjectId,
@@ -52,12 +50,10 @@ const UserSchema = new Schema({
 	profile_image:{
 		type:String
 	},
-
 	is_active: {
 		type: Boolean,
 		default: true
 	}
-
 }, { "collection": "users", "timestamps": true });
 
 

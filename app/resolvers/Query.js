@@ -20,6 +20,7 @@ const User = (_, args, context, info) => {
 };
 
 const Posts = async (_, args, context, info) => {
+	const number = await actions.getNewPosts();
 	const posts = args.tag ? await actions.getPostsByTag(args.tag)
 		: args.category ? await actions.getPostByCategory(args.category)
 			: await actions.getAllPost();
